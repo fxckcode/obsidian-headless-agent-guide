@@ -52,7 +52,26 @@ copy is treated as a mirror of the remote and local divergence is undone.
 > subscription, so the mode behaviours above are what Obsidian documents, not what
 > was tested here. Before you rely on either mode, set it on a **scratch vault**
 > with a disposable note, change the file locally, run `ob sync`, and confirm what
-> happens. Do not discover the semantics on your real vault.
+> Do not discover the semantics on your real vault.
+
+### Ordering: set the mode *before* the first sync
+
+`ob sync-setup` does **not** start syncing. In `obsidian-headless@0.0.14` it validates
+the vault, prompts for the encryption password if needed, and writes local
+configuration. The first transfer happens when you run `ob sync`. That leaves a
+window, and you should use it:
+
+1. `ob sync-setup --vault "<name or id>"`
+2. `ob sync-config --mode pull-only`
+3. `ob sync-config` — and **confirm the mode actually changed**
+4. only then: `ob sync`
+
+Make sure nothing else is invoking `ob sync` while you do this. A second process
+syncing bidirectionally inside that window is precisely the failure this ordering
+exists to prevent.
+
+This ordering was checked against the installed `0.0.14` package. It is a **separate
+claim** from the mode semantics above, which remain untested here.
 
 ## Run it
 
