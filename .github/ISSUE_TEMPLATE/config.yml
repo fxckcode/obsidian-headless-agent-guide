@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report (private)
+    url: https://github.com/fxckcode/obsidian-headless-agent-guide/security/advisories/new
+    about: Instructions that could destroy data or expose a vault. Do not open a public issue for this.

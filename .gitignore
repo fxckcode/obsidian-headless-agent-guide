@@ -1,0 +1,17 @@
+# Obsidian writes these into your vault; they are device state, not notes.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+
+# Sync and VCS internals.
+.stfolder/
+.stversions/
+.stignore
+.sync/
+.git/
+
+# Common editor and OS noise.
+.DS_Store
+Thumbs.db
+*.swp
+*~
